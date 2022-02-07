@@ -1,0 +1,259 @@
+/* 
+Quiz4
+*/
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js");
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap');
+//variables
+$main-color: #05a081;
+$text-color: #fff;
+$bg-color: #eee;
+$bg-color-2: #333;
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    // font-family: 'Nunito', sans-serif;
+    // font-size: 18px;
+    font: {
+        family: 'Nunito', sans-serif;
+        size: 18px;
+    }
+}
+
+header{
+    width:100%;
+    position: absolute;/* absolute */
+    background: transparent;
+    z-index: 10;
+}
+//header-grid
+.header-grid{
+    display:grid;
+    grid-auto-flow: column;
+}
+.logo{
+    color: $text-color;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.banner{
+    // background-image: url(../images/background.jpg);
+    // background-size: cover;
+    background: {
+    image: url(../images/background.jpg);
+    size: cover;
+    position: center;
+    };
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    z-index: 1;
+}
+.banner-text{
+    position: absolute;
+    width: 100%;
+    //margin: auto;
+    text-align: center;
+    //top:40%;
+    z-index: 10;
+
+    //grid
+    display: grid;
+    height:100%;
+    //justify-content: center;
+    //align-items: center;
+
+    //option
+    place-items: center;
+    
+}
+.banner-text-items {
+    color: $text-color;
+    text-align: center !important;
+    margin: auto;
+    width: 50%;
+    
+}
+.banner-text-items h2 {
+    font-size: 3rem;
+}
+
+// navigation
+nav{
+    
+    display:grid;
+    //grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeats(5, 1fr);
+    justify-content: space-around;
+    text-align: center;
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    li{
+        position:relative;
+        a{
+            display:block;
+            text-decoration: none;
+            color: $text-color;
+            //display: inline-block;
+            padding: 1.2rem 2rem;
+        }
+        a:hover{
+            color:$text-color;
+        }
+        ul{
+            position:absolute;
+            width:100%;
+            background-color: $text-color;
+            grid-template-columns: 1fr;
+            //display: none;
+            max-height:0;
+            overflow: hidden;
+            transition: max-height 0.3s;
+            li{
+                a{
+                    color:$bg-color-2 !important;
+                    display:block;
+                    text-align: center;
+                    padding: 1rem 0;
+                }
+            }
+        }
+    }
+}
+// custom css
+.padding{
+    padding: 4rem 0;
+}
+.bg-color{
+    background-color: $bg-color-2;
+    overflow: hidden;
+}
+
+
+main{
+    background-color: $bg-color;
+}
+
+//.sideleft{
+//    width: 30%;
+//    float: left;
+//}
+//.sideright{
+//    width: 60%;
+//    float: right;
+//}
+//main-grid
+.main-grid{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+}
+.btn{
+    background: $main-color;
+    padding: .6em 2em;
+    color: $text-color;
+    /* box-shadow: horizontal vertical blur-radius color; */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    border-radius: 25px;
+}
+//section-grid
+.section-grid{
+    display: grid;
+    //grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3 1fr);
+
+}
+.box{
+    //width: 30%;
+    //float: left;
+    padding: 2em;
+    text-align: center;
+    color: $text-color;
+}
+.box .fas{
+    font-size: 2em;
+}
+footer{
+    width: 100%;
+    text-align: center;
+}
+// social media
+.social{
+    width: 50px;
+    position: fixed;
+    top: 65%;
+    left: 1%;
+    
+}
+.social i{
+    display: block;
+    width: 40px;
+    font-size: 1.4em;
+    cursor: pointer;
+    padding: 2px;
+}
+.features-item{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax (300px, 1fr));
+}
+.feature .fas{
+    font-size 60px;
+    color:$main-color;
+}
+.feature h4{
+    margin: 1rem 0;
+}
+.fa-bars{
+    color:$text-color;
+    font-size: 1.6rem;
+    position:absolute;
+    top:1rem;
+    right: 0.5rem;
+    cursor: pointer;
+    z-index: 1;
+}
+#toggle, .fa-bars{
+    display: none;
+}
+@media(max-width: 780){
+    .main-grid, .section-grid{
+        grid-template-columns: 1fr;
+    }
+    nav{
+        ul{
+            grid-template-columns: 1fr;
+            background-color: rgba(0,0,0,0.6);
+            width:100%;
+            top:100%;
+            position:absolute;
+            left:0;
+            text-align: center;
+            transition: all 0.4s;
+            //option 1
+            max-height:0;
+            overflow:hidden;
+            //option 2
+            //opacity: 
+            //option 3
+            //transform:translateY(-0);
+            //option 4
+            //left: 0;
+
+        }
+    }
+    .fa-bars{
+        display:block !important;
+    }
+    #toggle:checked +ul{
+        max-height:300px;
+    }
+
+}
